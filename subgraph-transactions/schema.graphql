@@ -1,0 +1,22 @@
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.12",
+        import: ["@key"])
+
+type Query {
+  recentTransactions(limit: Int = 10): [Transaction!]!
+}
+
+type Transaction {
+  id: ID!
+  amount: Float!
+  currency: String!
+  description: String!
+  date: String!
+  transactionType: TransactionType!
+}
+
+enum TransactionType {
+  DEBIT
+  CREDIT
+  TRANSFER
+}

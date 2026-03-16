@@ -1,0 +1,19 @@
+query GetAccountWithTransactions {
+  account(id: "acc_001") {
+    id
+    accountType
+    status
+    owner {
+      name
+      email
+    }
+    transactions(limit: 5) {
+      id
+      amount
+      currency
+      description
+      date
+    }
+    totalDebits
+  }
+}

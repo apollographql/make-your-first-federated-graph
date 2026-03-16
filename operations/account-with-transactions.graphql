@@ -1,0 +1,12 @@
+query AccountWithTransactions {
+  account(id: "acc_001") {
+    id
+    accountType
+    owner { name }
+    transactions(limit: 5) {
+      amount
+      currency
+      description
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "subgraph-accounts",
+  "version": "1.0.0",
+  "description": "BankGraph — accounts subgraph",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx nodemon --watch ./schema.graphql --watch ./index.js ./index.js"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.11.0",
+    "@apollo/subgraph": "^2.12.0",
+    "graphql": "^16.9.0",
+    "graphql-tag": "^2.12.6"
+  }
+}

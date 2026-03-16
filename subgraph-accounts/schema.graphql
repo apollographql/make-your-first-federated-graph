@@ -1,0 +1,35 @@
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.12",
+        import: ["@key"])
+
+type Query {
+  account(id: ID!): Account
+  accounts: [Account!]!
+}
+
+type Account {
+  id: ID!
+  accountNumber: String!
+  accountType: AccountType!
+  status: AccountStatus!
+  openedDate: String!
+  owner: User!
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+enum AccountType {
+  CHECKING
+  SAVINGS
+  MONEY_MARKET
+}
+
+enum AccountStatus {
+  ACTIVE
+  INACTIVE
+  FROZEN
+}

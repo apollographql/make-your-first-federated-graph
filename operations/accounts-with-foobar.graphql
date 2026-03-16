@@ -1,0 +1,13 @@
+query AccountsWithFooBar {
+  accounts {
+    id
+    accountNumber
+    accountType
+    owner {
+      name
+    }
+    foobar
+  }
+}
+
+

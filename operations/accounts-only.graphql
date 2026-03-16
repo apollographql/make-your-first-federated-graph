@@ -1,0 +1,11 @@
+query AccountsOnly {
+  accounts {
+    id
+    accountNumber
+    accountType
+    owner {
+      name
+    }
+  }
+}
+
