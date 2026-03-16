@@ -1,13 +1,13 @@
 extend schema
   @link(url: "https://specs.apollo.dev/federation/v2.12",
-        import: ["@key"])
+        import: ["@key", "@shareable"])
 
 type Query {
   account(id: ID!): Account
   accounts: [Account!]!
 }
 
-type Account {
+type Account @key(fields: "id") {
   id: ID!
   accountNumber: String!
   accountType: AccountType!
@@ -16,7 +16,7 @@ type Account {
   owner: User!
 }
 
-type User {
+type User @shareable {
   id: ID!
   name: String!
   email: String!

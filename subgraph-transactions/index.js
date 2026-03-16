@@ -67,6 +67,21 @@ const resolvers = {
   Query: {
     recentTransactions: (_, { limit }) => transactions.slice(0, limit),
   },
+  Account: {
+    __resolveReference: (reference) => {
+      return { id: reference.id };
+    },
+    transactions: (account, { limit }) => {
+      return transactions
+        .filter(t => t.accountId === account.id)
+        .slice(0, limit);
+    },
+    totalDebits: (account) => {
+      const debits = transactions
+        .filter(t => t.accountId === account.id && t.amount < 0);
+      return Math.abs(debits.reduce((sum, t) => sum + t.amount, 0));
+    },
+  },
 };
 
 const server = new ApolloServer({

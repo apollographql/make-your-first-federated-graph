@@ -38,6 +38,11 @@ const resolvers = {
     account: (_, { id }) => accounts.find((a) => a.id === id),
     accounts: () => accounts,
   },
+  Account: {
+    __resolveReference: (reference) => {
+      return accounts.find(a => a.id === reference.id);
+    },
+  }
 };
 
 const server = new ApolloServer({

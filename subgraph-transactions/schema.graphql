@@ -1,9 +1,21 @@
 extend schema
   @link(url: "https://specs.apollo.dev/federation/v2.12",
-        import: ["@key"])
+        import: ["@key", "@shareable", "@external", "@requires"])
 
 type Query {
   recentTransactions(limit: Int = 10): [Transaction!]!
+}
+
+type User @shareable {
+  id: ID!
+  name: String!
+}
+
+type Account @key(fields: "id") {
+  id: ID!
+  accountType: AccountType! @external
+  transactions (limit: Int = 10): [Transaction!]!
+  totalDebits: Float! @requires(fields: "accountType")
 }
 
 type Transaction {
@@ -20,3 +32,5 @@ enum TransactionType {
   CREDIT
   TRANSFER
 }
+
+enum AccountType { CHECKING SAVINGS MONEY_MARKET }
