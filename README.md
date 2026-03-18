@@ -55,7 +55,7 @@ npm start
 
 **Terminal 3 — start the router with rover dev:**
 ```bash
-rover dev --config supergraph.yaml
+rover dev --supergraph-config supergraph.yaml
 # Router running at http://localhost:4000
 ```
 
